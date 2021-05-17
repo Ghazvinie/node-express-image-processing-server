@@ -32,7 +32,7 @@ router.post('/upload', upload.single('photo'), (req, res) => {
 
 router.get('/photo-viewer', (req, res) => {
     res.sendFile(photoPath);
-})
+});
 
 
 module.exports = router;
