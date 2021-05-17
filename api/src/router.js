@@ -19,7 +19,7 @@ function filename(request, file, callback) {
     callback(null, file.originalname);
 }
 
-const upload = multer({ key: fileFilter, storage: storage });
+const upload = multer({ fileFilter: fileFilter, storage: storage });
 
 router.post('/upload', upload.single('photo'), (req, res) => {
     if (req.fileValidationError) {
