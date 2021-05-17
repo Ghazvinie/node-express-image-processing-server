@@ -43,7 +43,7 @@ function imageProcessor(filename) {
                     workerData: {
                       source: sourcePath,
                       destination: monochromeDestination,
-                    },
+                    }
                   });
                 monochromeWorker.on('message', (message) => {
                     monochromeWorkerFinished = true;
