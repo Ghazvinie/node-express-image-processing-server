@@ -41,10 +41,10 @@ function imageProcessor(filename) {
                 
                 const monochromeWorker = new Worker(pathToMonochromeWorker, {
                     workerData: {
-                        source: sourcePath,
-                        destination: monochromeDestination
-                    }
-                });
+                      source: sourcePath,
+                      destination: monochromeDestination,
+                    },
+                  });
                 monochromeWorker.on('message', (message) => {
                     monochromeWorkerFinished = true;
                     if (resizeWorker) {
