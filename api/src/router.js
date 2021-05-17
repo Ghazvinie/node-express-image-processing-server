@@ -5,7 +5,7 @@ const path = require('path');
 const router = Router();
 
 const storage = multer.diskStorage({ destination: 'api/uploads/', filename: filename });
-const photoPath = path.resolve(__dirname, '../../client/photo_viewer.html');
+const photoPath = path.resolve(__dirname, '../../client/photo-viewer.html');
 
 function fileFilter(request, file, callback) {
     if (file.mimetype !== 'image/png') {
