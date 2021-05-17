@@ -24,6 +24,13 @@ function imageProcessor(filename) {
                         destination: resizedDestination
                     }
                 });
+                const monochromeWorker = new Worker(pathToMonochromeWorker, {
+                    workerData: {
+                      source: sourcePath,
+                      destination: monochromeDestination,
+                    }
+                  });
+                  
                 resizeWorker.on('message', (message) => {
                     resizedWorkerFinished = true;
                     if (monochromeWorkerFinished) {
@@ -39,12 +46,7 @@ function imageProcessor(filename) {
                     }
                 });
                 
-                const monochromeWorker = new Worker(pathToMonochromeWorker, {
-                    workerData: {
-                      source: sourcePath,
-                      destination: monochromeDestination,
-                    }
-                  });
+
                 monochromeWorker.on('message', (message) => {
                     monochromeWorkerFinished = true;
                     if (resizedWorkerFinished) {
